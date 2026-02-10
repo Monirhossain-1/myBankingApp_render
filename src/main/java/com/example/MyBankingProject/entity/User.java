@@ -19,7 +19,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "user_name", nullable = false, updatable = false)
     private String userName;
 
     @Column
@@ -47,7 +47,7 @@ public class User {
     @Column
     private Boolean accountNonLocked = true;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "userrole",
             joinColumns = @JoinColumn(name = "user_name"),

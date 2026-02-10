@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
 public class Role {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(name = "role_name", nullable = false, updatable = false)
     private String roleName;
 
     @Column
@@ -32,4 +32,16 @@ public class Role {
     @Column(nullable = false)
     private OffsetDateTime lastUpdated;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Role)) return false;
+        Role role = (Role) o;
+        return roleName != null && roleName.equals(role.roleName);
+    }
+
+    @Override
+    public int hashCode() {
+        return roleName != null ? roleName.hashCode() : 0;
+    }
 }
